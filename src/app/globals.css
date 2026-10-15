@@ -1,0 +1,580 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+  --font-display: var(--font-cinzel);
+  --font-mono: var(--font-jetbrains-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  /* Cosmic custom colors */
+  --color-cosmos: var(--cosmos);
+  --color-cosmos-deep: var(--cosmos-deep);
+  --color-cosmos-surface: var(--cosmos-surface);
+  --color-nebula: var(--nebula);
+  --color-stardust: var(--stardust);
+  --color-stardust-dim: var(--stardust-dim);
+  --color-cyan-glow: var(--cyan-glow);
+  --color-gold-glow: var(--gold-glow);
+  --color-plasma: var(--plasma);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* ===== Cosmic palette ===== */
+  /* Deep space backgrounds */
+  --cosmos: oklch(0.12 0.03 265);              /* near-black navy */
+  --cosmos-deep: oklch(0.07 0.025 265);        /* deeper black-navy */
+  --cosmos-surface: oklch(0.16 0.035 260);     /* raised surface */
+
+  /* Nebula veil (subtle violet used sparingly for depth) */
+  --nebula: oklch(0.5 0.09 290);
+
+  /* Text */
+  --stardust: oklch(0.96 0.005 240);           /* near-white starlight */
+  --stardust-dim: oklch(0.72 0.02 240);        /* dimmed starlight */
+
+  /* Signature glows */
+  --cyan-glow: oklch(0.78 0.15 200);           /* electric cyan */
+  --gold-glow: oklch(0.82 0.14 85);            /* warm amber-gold */
+  --plasma: oklch(0.7 0.18 320);               /* plasma magenta accent */
+
+  /* Cosmic background layers (referenced by CosmicBackground component) */
+  --bg-base: radial-gradient(120% 90% at 50% 0%, oklch(0.16 0.045 262) 0%, oklch(0.1 0.03 264) 38%, oklch(0.06 0.02 266) 70%, oklch(0.04 0.015 266) 100%);
+  --bg-nebula-cyan: radial-gradient(circle, oklch(0.6 0.16 200 / 0.5), transparent 70%);
+  --bg-nebula-gold: radial-gradient(circle, oklch(0.75 0.14 80 / 0.42), transparent 70%);
+  --bg-nebula-plasma: radial-gradient(ellipse, oklch(0.55 0.16 320 / 0.35), transparent 70%);
+  --bg-vignette: radial-gradient(120% 100% at 50% 50%, transparent 55%, oklch(0.04 0.015 266 / 0.85) 100%);
+  --grid-line: oklch(0.78 0.12 200 / 0.05);
+  --star-opacity: 1;
+
+  /* Map shadcn tokens onto cosmic palette */
+  --background: var(--cosmos-deep);
+  --foreground: var(--stardust);
+  --card: oklch(0.15 0.035 262 / 0.7);
+  --card-foreground: var(--stardust);
+  --popover: var(--cosmos-surface);
+  --popover-foreground: var(--stardust);
+  --primary: var(--cyan-glow);
+  --primary-foreground: oklch(0.08 0.02 250);
+  --secondary: var(--cosmos-surface);
+  --secondary-foreground: var(--stardust);
+  --muted: oklch(0.2 0.03 260);
+  --muted-foreground: var(--stardust-dim);
+  --accent: oklch(0.82 0.14 85 / 0.12);
+  --accent-foreground: var(--gold-glow);
+  --destructive: oklch(0.65 0.22 22);
+  --border: oklch(0.78 0.12 200 / 0.16);
+  --input: oklch(0.78 0.12 200 / 0.18);
+  --ring: var(--cyan-glow);
+  --chart-1: var(--cyan-glow);
+  --chart-2: var(--gold-glow);
+  --chart-3: var(--plasma);
+  --chart-4: oklch(0.65 0.13 170);
+  --chart-5: oklch(0.6 0.1 250);
+  --sidebar: var(--cosmos);
+  --sidebar-foreground: var(--stardust);
+  --sidebar-primary: var(--cyan-glow);
+  --sidebar-primary-foreground: oklch(0.08 0.02 250);
+  --sidebar-accent: var(--cosmos-surface);
+  --sidebar-accent-foreground: var(--stardust);
+  --sidebar-border: oklch(0.78 0.12 200 / 0.16);
+  --sidebar-ring: var(--cyan-glow);
+}
+
+.dark {
+  /* The site is cosmic-dark by default; keep the same tokens. */
+  --background: var(--cosmos-deep);
+  --foreground: var(--stardust);
+  --card: oklch(0.15 0.035 262 / 0.7);
+  --card-foreground: var(--stardust);
+  --popover: var(--cosmos-surface);
+  --popover-foreground: var(--stardust);
+  --primary: var(--cyan-glow);
+  --primary-foreground: oklch(0.08 0.02 250);
+  --secondary: var(--cosmos-surface);
+  --secondary-foreground: var(--stardust);
+  --muted: oklch(0.2 0.03 260);
+  --muted-foreground: var(--stardust-dim);
+  --accent: oklch(0.82 0.14 85 / 0.12);
+  --accent-foreground: var(--gold-glow);
+  --destructive: oklch(0.65 0.22 22);
+  --border: oklch(0.78 0.12 200 / 0.16);
+  --input: oklch(0.78 0.12 200 / 0.18);
+  --ring: var(--cyan-glow);
+  --chart-1: var(--cyan-glow);
+  --chart-2: var(--gold-glow);
+  --chart-3: var(--plasma);
+  --chart-4: oklch(0.65 0.13 170);
+  --chart-5: oklch(0.6 0.1 250);
+  --sidebar: var(--cosmos);
+  --sidebar-foreground: var(--stardust);
+  --sidebar-primary: var(--cyan-glow);
+  --sidebar-primary-foreground: oklch(0.08 0.02 250);
+  --sidebar-accent: var(--cosmos-surface);
+  --sidebar-accent-foreground: var(--stardust);
+  --sidebar-border: oklch(0.78 0.12 200 / 0.16);
+  --sidebar-ring: var(--cyan-glow);
+}
+
+/* ===== Light "starlight" theme variant =====
+   Overrides the cosmic dark palette with a light, airy starlight scheme.
+   Activated via <html class="light"> (next-themes toggle). Keeps the
+   cyan + gold signature glows so the brand identity holds in light mode. */
+.light {
+  --cosmos: oklch(0.96 0.01 240);              /* near-white */
+  --cosmos-deep: oklch(0.99 0.005 240);        /* pure white-ish */
+  --cosmos-surface: oklch(0.93 0.012 240);     /* light grey surface */
+
+  --stardust: oklch(0.18 0.02 260);            /* dark navy text */
+  --stardust-dim: oklch(0.42 0.02 260);        /* medium grey */
+
+  --cyan-glow: oklch(0.55 0.16 200);           /* deeper cyan for contrast on white */
+  --gold-glow: oklch(0.55 0.13 65);            /* deeper gold for contrast on white */
+  --plasma: oklch(0.5 0.18 320);
+
+  /* Light cosmic background: soft starlight instead of deep space */
+  --bg-base: radial-gradient(120% 90% at 50% 0%, oklch(0.98 0.008 240) 0%, oklch(0.96 0.01 245) 38%, oklch(0.94 0.012 250) 70%, oklch(0.92 0.012 255) 100%);
+  --bg-nebula-cyan: radial-gradient(circle, oklch(0.7 0.12 200 / 0.18), transparent 70%);
+  --bg-nebula-gold: radial-gradient(circle, oklch(0.75 0.1 75 / 0.15), transparent 70%);
+  --bg-nebula-plasma: radial-gradient(ellipse, oklch(0.6 0.12 320 / 0.1), transparent 70%);
+  --bg-vignette: radial-gradient(120% 100% at 50% 50%, transparent 65%, oklch(0.9 0.01 250 / 0.4) 100%);
+  --grid-line: oklch(0.55 0.12 200 / 0.06);
+  --star-opacity: 0.35;
+
+  --background: var(--cosmos-deep);
+  --foreground: var(--stardust);
+  --card: oklch(0.95 0.01 240 / 0.8);
+  --card-foreground: var(--stardust);
+  --popover: var(--cosmos-surface);
+  --popover-foreground: var(--stardust);
+  --primary: var(--cyan-glow);
+  --primary-foreground: oklch(0.99 0.005 240);
+  --secondary: var(--cosmos-surface);
+  --secondary-foreground: var(--stardust);
+  --muted: oklch(0.9 0.01 240);
+  --muted-foreground: var(--stardust-dim);
+  --accent: oklch(0.55 0.13 65 / 0.1);
+  --accent-foreground: var(--gold-glow);
+  --destructive: oklch(0.55 0.22 22);
+  --border: oklch(0.55 0.12 200 / 0.2);
+  --input: oklch(0.55 0.12 200 / 0.2);
+  --ring: var(--cyan-glow);
+  --chart-1: var(--cyan-glow);
+  --chart-2: var(--gold-glow);
+  --chart-3: var(--plasma);
+  --chart-4: oklch(0.5 0.13 170);
+  --chart-5: oklch(0.45 0.1 250);
+  --sidebar: var(--cosmos);
+  --sidebar-foreground: var(--stardust);
+  --sidebar-primary: var(--cyan-glow);
+  --sidebar-primary-foreground: oklch(0.99 0.005 240);
+  --sidebar-accent: var(--cosmos-surface);
+  --sidebar-accent-foreground: var(--stardust);
+  --sidebar-border: oklch(0.55 0.12 200 / 0.2);
+  --sidebar-ring: var(--cyan-glow);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    overflow-x: hidden;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv01";
+    background-color: var(--cosmos-deep);
+    overflow-x: hidden;
+    width: 100%;
+  }
+  ::selection {
+    background: oklch(0.78 0.15 200 / 0.3);
+    color: var(--stardust);
+  }
+}
+
+@layer base {
+  /* Firefox selection variant — must be a separate rule (cannot be chained) */
+  ::-moz-selection {
+    background: oklch(0.82 0.14 85 / 0.28);
+    color: var(--stardust);
+  }
+}
+
+/* ===== Accessibility: cyan focus-visible ring on interactive elements ===== */
+@layer base {
+  :where(a, button, [role="button"], input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid oklch(0.78 0.15 200);
+    outline-offset: 2px;
+    border-radius: 6px;
+    box-shadow:
+      0 0 0 4px oklch(0.78 0.15 200 / 0.18),
+      0 0 22px -4px oklch(0.78 0.15 200 / 0.55);
+    transition: box-shadow 180ms ease, outline-offset 180ms ease;
+  }
+}
+
+/* ===== Cosmic scrollbar + fonts (layered) ===== */
+@layer utilities {
+  .font-display {
+    font-family: var(--font-cinzel);
+  }
+  .font-mono-proto {
+    font-family: var(--font-jetbrains-mono);
+  }
+
+  /* Custom scrollbar */
+  .cosmic-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .cosmic-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 999px;
+  }
+  .cosmic-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      oklch(0.78 0.15 200 / 0.5),
+      oklch(0.82 0.14 85 / 0.4)
+    );
+    border-radius: 999px;
+  }
+  .cosmic-scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      oklch(0.78 0.15 200 / 0.8),
+      oklch(0.82 0.14 85 / 0.7)
+    );
+  }
+
+  /* Global page scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--cosmos-deep);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.25 0.04 260);
+    border-radius: 999px;
+    border: 2px solid var(--cosmos-deep);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.35 0.06 220);
+  }
+}
+
+/* ===== Top-level cosmic component utilities (high cascade priority) ===== */
+
+/* Text gradient helpers — literal oklch so there is no var() resolution lag,
+   and defined at top level so background-clip:text is never overridden. */
+.text-gradient-cyan-gold {
+  background-image: linear-gradient(
+    100deg,
+    oklch(0.78 0.15 200) 0%,
+    oklch(0.88 0.06 200) 45%,
+    oklch(0.82 0.14 85) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.text-gradient-gold {
+  background-image: linear-gradient(
+    100deg,
+    oklch(0.82 0.14 85) 0%,
+    oklch(0.9 0.06 85) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Box glows */
+.glow-cyan {
+  box-shadow:
+    0 0 0 1px oklch(0.78 0.15 200 / 0.3),
+    0 0 30px -8px oklch(0.78 0.15 200 / 0.5),
+    0 0 60px -20px oklch(0.78 0.15 200 / 0.4);
+}
+.glow-gold {
+  box-shadow:
+    0 0 0 1px oklch(0.82 0.14 85 / 0.3),
+    0 0 30px -8px oklch(0.82 0.14 85 / 0.5),
+    0 0 60px -20px oklch(0.82 0.14 85 / 0.4);
+}
+
+/* Text glows — IMPORTANT: do NOT combine with .text-gradient-* on the same
+   element. filter:drop-shadow on background-clip:text can break the clip in
+   some Chromium builds. Apply glow to a parent wrapper instead. */
+.text-glow-cyan {
+  filter: drop-shadow(0 0 16px oklch(0.78 0.15 200 / 0.55));
+}
+.text-glow-gold {
+  filter: drop-shadow(0 0 16px oklch(0.82 0.14 85 / 0.5));
+}
+
+/* Glass panel */
+.glass-panel {
+  background: linear-gradient(
+    160deg,
+    oklch(0.18 0.04 262 / 0.55),
+    oklch(0.1 0.03 262 / 0.35)
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid oklch(0.78 0.12 200 / 0.14);
+}
+
+/* Hairline border with cyan tint */
+.hairline {
+  border: 1px solid oklch(0.78 0.12 200 / 0.12);
+}
+
+/* Section padding */
+.section-pad {
+  padding-top: clamp(4rem, 9vw, 8rem);
+  padding-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+  /* Slow spin for orbital rings */
+  .animate-spin-slow {
+    animation: spin 48s linear infinite;
+  }
+  .animate-spin-slower {
+    animation: spin 90s linear infinite;
+  }
+  .animate-spin-reverse-slow {
+    animation: spin-reverse 60s linear infinite;
+  }
+
+  @keyframes spin-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+
+  /* Subtle float */
+  .animate-float {
+    animation: float 7s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* Pulse glow */
+  .animate-pulse-glow {
+    animation: pulse-glow 5s ease-in-out infinite;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.04); }
+  }
+
+  /* Aurora shimmer for the equation */
+  .animate-aurora {
+    background-size: 200% 200%;
+    animation: aurora 8s ease infinite;
+  }
+  @keyframes aurora {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Twinkle for stars */
+  .animate-twinkle {
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+  }
+
+  /* Marquee for praise strip */
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Grid background — theme-aware via --grid-line variable */
+  .bg-cosmic-grid {
+    background-image:
+      linear-gradient(to right, var(--grid-line, oklch(0.78 0.12 200 / 0.05)) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line, oklch(0.78 0.12 200 / 0.05)) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Radial mask to fade grid edges */
+  .mask-radial-fade {
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
+  }
+
+  /* 3D tilt helpers (disabled gracefully on touch via JS gating) */
+  .tilt-3d {
+    transform-style: preserve-3d;
+    perspective: 900px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Footer transmission scan line */
+  .animate-transmission {
+    animation: transmission 5.5s ease-in-out infinite;
+  }
+  @keyframes transmission {
+    0% { transform: translateX(-110%); opacity: 0; }
+    8% { opacity: 1; }
+    92% { opacity: 1; }
+    100% { transform: translateX(110%); opacity: 0; }
+  }
+
+  /* Subtle caret blink for the typing subtitle */
+  .caret-blink {
+    animation: caret-blink 1s steps(1) infinite;
+  }
+  @keyframes caret-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+
+/* ===== Reduced-motion accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-float,
+  .animate-spin-slow,
+  .animate-spin-slower,
+  .animate-spin-reverse-slow,
+  .animate-pulse-glow,
+  .animate-aurora,
+  .animate-twinkle,
+  .animate-marquee {
+    animation: none !important;
+  }
+}
+
+/* ===== Print stylesheet =====
+   Produces a clean, readable printout of the book overview for offline
+   reading / sharing. Hides interactive/decorative elements, forces the
+   cosmic dark theme to light-on-dark for ink economy, and expands all
+   collapsed content. */
+@media print {
+  /* force a light background + dark text for print (ink economy) */
+  html, body {
+    background: #fff !important;
+    color: #111 !important;
+    overflow: visible !important;
+  }
+  /* hide decorative + interactive chrome */
+  .fixed,
+  [aria-hidden="true"],
+  button[aria-label*="keyboard shortcuts"],
+  button[aria-label*="Open your reading list"],
+  nav [aria-label],
+  [class*="animate-"],
+  .pointer-events-none {
+    display: none !important;
+  }
+  /* sections: avoid breaking inside, add space */
+  section {
+    page-break-inside: avoid;
+    padding: 1rem 0 !important;
+  }
+  /* gradient text → solid dark for print legibility */
+  .text-gradient-cyan-gold,
+  .text-gradient-gold {
+    -webkit-text-fill-color: #111 !important;
+    color: #111 !important;
+    background: none !important;
+  }
+  /* glass panels → plain white with a hairline border */
+  .glass-panel {
+    background: #fff !important;
+    border: 1px solid #ccc !important;
+    backdrop-filter: none !important;
+  }
+  /* dim text → dark grey for contrast */
+  .text-stardust-dim,
+  [class*="text-stardust-dim"] {
+    color: #333 !important;
+  }
+  .text-cyan-glow,
+  .text-gold-glow {
+    color: #111 !important;
+  }
+  /* links: show the Amazon URL for the buy CTA */
+  a[href*="amazon"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555;
+  }
+  /* main + footer visible; hide the rest of fixed UI */
+  main, footer {
+    display: block !important;
+  }
+  /* force full-width content */
+  .mx-auto {
+    max-width: 100% !important;
+  }
+  /* avoid orphans/widows */
+  p, h1, h2, h3, h4 {
+    page-break-after: avoid;
+  }
+}
