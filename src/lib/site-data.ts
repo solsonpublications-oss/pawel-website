@@ -7,12 +7,10 @@ export const PUBLISHER = "Solson Publications";
 export const PUBLICATION_YEAR = "2026";
 
 export const NAV_LINKS = [
-  { label: "The Book", href: "#book" },
   { label: "The Equation", href: "#equation" },
-  { label: "Concepts", href: "#concepts" },
   { label: "Chapters", href: "#chapters" },
   { label: "The Author", href: "#author" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Praise", href: "#praise" },
 ] as const;
 
 export const HERO_STATS = [
@@ -416,12 +414,10 @@ export const KEYBOARD_SHORTCUTS = [
   { key: "?", label: "Open / close this help" },
   { key: "B", label: "Buy on Amazon", href: BUY_URL },
   { key: "L", label: "Look Inside the book" },
-  { key: "1", label: "Jump to The Book", href: "#book" },
-  { key: "2", label: "Jump to The Equation", href: "#equation" },
-  { key: "3", label: "Jump to Concepts", href: "#concepts" },
-  { key: "4", label: "Jump to Chapters", href: "#chapters" },
-  { key: "5", label: "Jump to The Author", href: "#author" },
-  { key: "6", label: "Jump to FAQ", href: "#faq" },
+  { key: "1", label: "Jump to The Equation", href: "#equation" },
+  { key: "2", label: "Jump to Chapters", href: "#chapters" },
+  { key: "3", label: "Jump to The Author", href: "#author" },
+  { key: "4", label: "Jump to Praise", href: "#praise" },
   { key: "T", label: "Back to top", href: "#top" },
 ] as const;
 

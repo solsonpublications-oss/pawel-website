@@ -6,13 +6,10 @@ import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
 import { BookSpecsStrip } from "@/components/sections/book-specs-strip";
 import { CoreEquation } from "@/components/sections/core-equation";
-import { Synopsis } from "@/components/sections/synopsis";
 import { QuoteOfTheVisit } from "@/components/sections/quote-of-the-visit";
-import { KeyConcepts } from "@/components/sections/key-concepts";
 import { Chapters } from "@/components/sections/chapters";
 import { AuthorBio } from "@/components/sections/author-bio";
 import { Praise } from "@/components/sections/praise";
-import { FAQ } from "@/components/sections/faq";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { Footer } from "@/components/sections/footer";
 import { StickyBuyButton } from "@/components/sections/sticky-buy-button";
@@ -33,11 +30,8 @@ export default function Home() {
           <BookSpecsStrip />
         </div>
         <CoreEquation />
-        <ConstellationDivider className="my-2" />
-        <Synopsis />
-        <QuoteOfTheVisit />
         <ConstellationDivider className="my-2" tone="gold" />
-        <KeyConcepts />
+        <QuoteOfTheVisit />
         <ConstellationDivider className="my-2" />
         <Chapters />
         <ConstellationDivider className="my-2" tone="gold" />
@@ -45,7 +39,6 @@ export default function Home() {
         <ConstellationDivider className="my-2" />
         <Praise />
         <ConstellationDivider className="my-2" tone="gold" />
-        <FAQ />
         <FinalCTA />
       </main>
       <Footer />

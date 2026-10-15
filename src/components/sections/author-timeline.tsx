@@ -101,7 +101,7 @@ export function AuthorTimeline() {
           }`}
           style={{
             background:
-              "linear-gradient(to right, oklch(0.07 0.025 265), transparent)",
+              "linear-gradient(to right, var(--cosmos-deep), transparent)",
           }}
         />
         {/* right edge fade cue — fades out when at end */}
@@ -112,7 +112,7 @@ export function AuthorTimeline() {
           }`}
           style={{
             background:
-              "linear-gradient(to left, oklch(0.07 0.025 265), transparent)",
+              "linear-gradient(to left, var(--cosmos-deep), transparent)",
           }}
         />
 

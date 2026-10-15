@@ -15,13 +15,10 @@ import { motion, AnimatePresence } from "framer-motion";
  */
 
 const SECTIONS = [
-  { id: "book", label: "The Book" },
   { id: "equation", label: "The Equation" },
-  { id: "concepts", label: "Concepts" },
   { id: "chapters", label: "Chapters" },
   { id: "author", label: "The Author" },
   { id: "praise", label: "Praise" },
-  { id: "faq", label: "FAQ" },
 ] as const;
 
 type SectionId = (typeof SECTIONS)[number]["id"];

@@ -177,8 +177,8 @@ export function Hero() {
               Look Inside
             </button>
             <a
-              href="#book"
-              aria-label="Explore the book — scroll to synopsis"
+              href="#equation"
+              aria-label="Explore the book — scroll to the equation"
               className="inline-flex items-center gap-2 rounded-full border border-cyan-glow/30 bg-cyan-glow/5 px-6 py-3.5 text-sm font-semibold text-stardust backdrop-blur-sm transition-colors duration-300 hover:bg-cyan-glow/10 hover:text-cyan-glow sm:text-base"
             >
               <BookOpen className="h-5 w-5" />
@@ -295,7 +295,7 @@ export function Hero() {
 
       {/* Scroll cue */}
       <motion.a
-        href="#book"
+        href="#equation"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.6 }}

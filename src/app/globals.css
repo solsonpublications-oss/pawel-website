@@ -161,27 +161,27 @@
 .light {
   --cosmos: oklch(0.96 0.01 240);              /* near-white */
   --cosmos-deep: oklch(0.99 0.005 240);        /* pure white-ish */
-  --cosmos-surface: oklch(0.93 0.012 240);     /* light grey surface */
+  --cosmos-surface: oklch(0.94 0.01 240);      /* clean light grey surface */
 
-  --stardust: oklch(0.18 0.02 260);            /* dark navy text */
-  --stardust-dim: oklch(0.42 0.02 260);        /* medium grey */
+  --stardust: oklch(0.14 0.02 260);            /* deep navy-black text, high contrast */
+  --stardust-dim: oklch(0.38 0.02 260);        /* crisp slate text */
 
-  --cyan-glow: oklch(0.55 0.16 200);           /* deeper cyan for contrast on white */
-  --gold-glow: oklch(0.55 0.13 65);            /* deeper gold for contrast on white */
-  --plasma: oklch(0.5 0.18 320);
+  --cyan-glow: oklch(0.42 0.16 210);           /* deep electric cyan with high contrast */
+  --gold-glow: oklch(0.44 0.16 65);            /* deep rich amber-gold with high contrast */
+  --plasma: oklch(0.45 0.18 320);
 
   /* Light cosmic background: soft starlight instead of deep space */
-  --bg-base: radial-gradient(120% 90% at 50% 0%, oklch(0.98 0.008 240) 0%, oklch(0.96 0.01 245) 38%, oklch(0.94 0.012 250) 70%, oklch(0.92 0.012 255) 100%);
-  --bg-nebula-cyan: radial-gradient(circle, oklch(0.7 0.12 200 / 0.18), transparent 70%);
-  --bg-nebula-gold: radial-gradient(circle, oklch(0.75 0.1 75 / 0.15), transparent 70%);
-  --bg-nebula-plasma: radial-gradient(ellipse, oklch(0.6 0.12 320 / 0.1), transparent 70%);
-  --bg-vignette: radial-gradient(120% 100% at 50% 50%, transparent 65%, oklch(0.9 0.01 250 / 0.4) 100%);
-  --grid-line: oklch(0.55 0.12 200 / 0.06);
-  --star-opacity: 0.35;
+  --bg-base: radial-gradient(120% 90% at 50% 0%, oklch(0.99 0.005 240) 0%, oklch(0.97 0.008 245) 38%, oklch(0.95 0.01 250) 70%, oklch(0.93 0.01 255) 100%);
+  --bg-nebula-cyan: radial-gradient(circle, oklch(0.65 0.14 205 / 0.14), transparent 70%);
+  --bg-nebula-gold: radial-gradient(circle, oklch(0.72 0.12 75 / 0.14), transparent 70%);
+  --bg-nebula-plasma: radial-gradient(ellipse, oklch(0.6 0.14 320 / 0.08), transparent 70%);
+  --bg-vignette: radial-gradient(120% 100% at 50% 50%, transparent 65%, oklch(0.92 0.01 250 / 0.3) 100%);
+  --grid-line: oklch(0.44 0.12 205 / 0.06);
+  --star-opacity: 0.45;
 
   --background: var(--cosmos-deep);
   --foreground: var(--stardust);
-  --card: oklch(0.95 0.01 240 / 0.8);
+  --card: oklch(0.98 0.005 240 / 0.9);
   --card-foreground: var(--stardust);
   --popover: var(--cosmos-surface);
   --popover-foreground: var(--stardust);
@@ -189,26 +189,26 @@
   --primary-foreground: oklch(0.99 0.005 240);
   --secondary: var(--cosmos-surface);
   --secondary-foreground: var(--stardust);
-  --muted: oklch(0.9 0.01 240);
+  --muted: oklch(0.92 0.01 240);
   --muted-foreground: var(--stardust-dim);
-  --accent: oklch(0.55 0.13 65 / 0.1);
+  --accent: oklch(0.44 0.16 65 / 0.12);
   --accent-foreground: var(--gold-glow);
   --destructive: oklch(0.55 0.22 22);
-  --border: oklch(0.55 0.12 200 / 0.2);
-  --input: oklch(0.55 0.12 200 / 0.2);
+  --border: oklch(0.42 0.12 210 / 0.18);
+  --input: oklch(0.42 0.12 210 / 0.18);
   --ring: var(--cyan-glow);
   --chart-1: var(--cyan-glow);
   --chart-2: var(--gold-glow);
   --chart-3: var(--plasma);
-  --chart-4: oklch(0.5 0.13 170);
-  --chart-5: oklch(0.45 0.1 250);
+  --chart-4: oklch(0.45 0.13 170);
+  --chart-5: oklch(0.4 0.1 250);
   --sidebar: var(--cosmos);
   --sidebar-foreground: var(--stardust);
   --sidebar-primary: var(--cyan-glow);
   --sidebar-primary-foreground: oklch(0.99 0.005 240);
   --sidebar-accent: var(--cosmos-surface);
   --sidebar-accent-foreground: var(--stardust);
-  --sidebar-border: oklch(0.55 0.12 200 / 0.2);
+  --sidebar-border: oklch(0.42 0.12 210 / 0.18);
   --sidebar-ring: var(--cyan-glow);
 }
 
@@ -370,6 +370,81 @@
   border: 1px solid oklch(0.78 0.12 200 / 0.14);
 }
 
+/* ===== Light mode overrides (high cascade priority) ===== */
+.light .text-gradient-cyan-gold {
+  background-image: linear-gradient(
+    100deg,
+    oklch(0.34 0.18 215) 0%,
+    oklch(0.28 0.16 255) 45%,
+    oklch(0.40 0.17 65) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.light .text-gradient-gold {
+  background-image: linear-gradient(
+    100deg,
+    oklch(0.42 0.17 65) 0%,
+    oklch(0.36 0.15 50) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.light .glass-panel {
+  background: linear-gradient(
+    160deg,
+    oklch(1 0 0 / 0.92),
+    oklch(0.96 0.008 240 / 0.88)
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid oklch(0.42 0.12 210 / 0.18);
+  box-shadow: 0 10px 30px -10px oklch(0.2 0.02 260 / 0.08), 0 1px 3px oklch(0.2 0.02 260 / 0.04);
+}
+
+/* Ensure text on all gradient buttons, badges and gold chips remains crisp dark navy in light mode */
+.light .text-cosmos-deep,
+.light [class*="text-cosmos-deep"] {
+  color: oklch(0.08 0.025 260) !important;
+}
+
+/* In light mode, turn off blurry drop-shadow glow filters on text for crystal clarity */
+.light .text-glow-cyan,
+.light .text-glow-gold {
+  filter: none;
+}
+
+/* In light mode, refine box glows to be elegant soft shadows */
+.light .glow-cyan {
+  box-shadow:
+    0 0 0 1px oklch(0.42 0.14 210 / 0.25),
+    0 8px 24px -6px oklch(0.42 0.14 210 / 0.16);
+}
+.light .glow-gold {
+  box-shadow:
+    0 0 0 1px oklch(0.44 0.14 65 / 0.25),
+    0 8px 24px -6px oklch(0.44 0.14 65 / 0.16);
+}
+
+/* In light mode, card surfaces and badges get crisp borders and readable text */
+.light .bg-cosmos-surface\/30,
+.light .bg-cosmos-surface\/40,
+.light .bg-cosmos-surface\/50 {
+  background-color: oklch(1 0 0 / 0.75);
+}
+
+.light .bg-cosmos-deep\/40,
+.light .bg-cosmos-deep\/50,
+.light .bg-cosmos-deep\/60 {
+  background-color: oklch(0.95 0.01 240 / 0.8);
+}
+
 /* Hairline border with cyan tint */
 .hairline {
   border: 1px solid oklch(0.78 0.12 200 / 0.12);
@@ -487,6 +562,41 @@
     51%, 100% { opacity: 0; }
   }
 
+  /* Ambient cosmic background animations */
+  .animate-nebula-drift-1 {
+    animation: nebula-drift-1 24s ease-in-out infinite alternate;
+  }
+  @keyframes nebula-drift-1 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(35px, -25px) scale(1.08); }
+    100% { transform: translate(-20px, 15px) scale(0.96); }
+  }
+
+  .animate-nebula-drift-2 {
+    animation: nebula-drift-2 32s ease-in-out infinite alternate;
+  }
+  @keyframes nebula-drift-2 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-30px, 35px) scale(1.1); }
+    100% { transform: translate(25px, -15px) scale(0.94); }
+  }
+
+  .animate-aurora-glow {
+    animation: aurora-glow 14s ease-in-out infinite alternate;
+  }
+  @keyframes aurora-glow {
+    0% { opacity: 0.25; transform: scale(0.96); }
+    50% { opacity: 0.55; transform: scale(1.06); }
+    100% { opacity: 0.35; transform: scale(1); }
+  }
+
+  .animate-orbital-drift {
+    animation: orbital-drift 80s linear infinite;
+  }
+  @keyframes orbital-drift {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
 
 /* ===== Reduced-motion accessibility ===== */
 @media (prefers-reduced-motion: reduce) {
@@ -505,7 +615,11 @@
   .animate-pulse-glow,
   .animate-aurora,
   .animate-twinkle,
-  .animate-marquee {
+  .animate-marquee,
+  .animate-nebula-drift-1,
+  .animate-nebula-drift-2,
+  .animate-aurora-glow,
+  .animate-orbital-drift {
     animation: none !important;
   }
 }

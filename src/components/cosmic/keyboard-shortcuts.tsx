@@ -74,9 +74,10 @@ export function KeyboardShortcuts() {
         window.scrollTo({ top: 0, behavior: "smooth" });
         return;
       }
+      const sectionIds = ["equation", "chapters", "author", "praise"];
       const num = parseInt(e.key, 10);
-      if (num >= 1 && num <= 6) {
-        const target = document.querySelectorAll("section[id]")[num - 1];
+      if (num >= 1 && num <= sectionIds.length) {
+        const target = document.getElementById(sectionIds[num - 1]);
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: "smooth", block: "start" });

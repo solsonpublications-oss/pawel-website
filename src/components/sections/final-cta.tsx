@@ -73,10 +73,10 @@ export function FinalCTA() {
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </a>
             <a
-              href="#book"
+              href="#equation"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-cyan-glow/25 bg-cyan-glow/5 px-6 py-4 text-base font-semibold text-stardust backdrop-blur-sm transition-colors hover:bg-cyan-glow/10 hover:text-cyan-glow sm:w-auto"
             >
-              Re-read the manifesto
+              Explore the Equation
             </a>
           </div>
 
